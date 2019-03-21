@@ -1,5 +1,8 @@
 #include <vie/Engine.h>
 
+#include "CameraControll.h"
+#include "Map.h"
+
 class MainClass : public vie::Engine
 {
 public:
@@ -9,5 +12,9 @@ public:
 	void onCreate();
 	void update(float et);
 	void render(vie::Graphics* g);
+
+private:
+	CameraControll* cameraControll;
+	Map* map;
 
 };
