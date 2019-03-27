@@ -3,6 +3,7 @@
 #include "Player.h"
 
 #include <vie/ObjectsManager.h>
+#include <vie/Input.h>
 
 MainClass::MainClass() {
 	runEngine("Skate", 1280, 728);
@@ -16,12 +17,12 @@ MainClass::~MainClass() {
 void MainClass::onCreate() {
 	createWorld(glm::vec2(0, 10.0f));
 
-	Player* player = new Player(b_world);
+	Player* player = new Player(objectsManager, b_world);
 
 	objectsManager->appendObject(player);
 	objectsManager->appendKeyListener(player);
 
-	mainCamera->setScale(64);
+	mainCamera->setScale(120);
 	cameraControll = new CameraControll(player, mainCamera);
 
 	map = new Map(b_world, objectsManager);
@@ -30,6 +31,10 @@ void MainClass::onCreate() {
 void MainClass::update(float et) {
 	objectsManager->update(et);
 	//cameraControll->update(et);
+
+	if (vie::Input::isKeyPressed(SDLK_ESCAPE)) {
+		destroyEngine();
+	}
 }
 
 void MainClass::render(vie::Graphics* g) {
@@ -38,4 +43,12 @@ void MainClass::render(vie::Graphics* g) {
 	map->render(g);
 
 	objectsManager->render(g);
+}
+
+void MainClass::onFatalError(const std::string& errMsg) {
+	system("pause");
+}
+
+void MainClass::onLog(const std::string& errMsg) {
+
 }

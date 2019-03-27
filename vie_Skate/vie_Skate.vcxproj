@@ -129,6 +129,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Board.cpp" />
+    <ClCompile Include="Box.cpp" />
     <ClCompile Include="CameraControll.cpp" />
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="main.cpp" />
@@ -137,6 +139,8 @@
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Board.h" />
+    <ClInclude Include="Box.h" />
     <ClInclude Include="CameraControll.h" />
     <ClInclude Include="Ground.h" />
     <ClInclude Include="MainClass.h" />

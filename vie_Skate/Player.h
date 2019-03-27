@@ -1,13 +1,15 @@
 #pragma once
 
-#include <vie/Object.h>
 #include <vie/Timer.h>
+#include <vie/Object.h>
+#include <vie/ObjectsManager.h>
 #include <Box2D/Box2D.h>
 
+class Board;
 class Player : public vie::Object
 {
 public:
-	Player(b2World* world);
+	Player(vie::ObjectsManager* om, b2World* world);
 	~Player();
 
 	void update(float et);
@@ -16,12 +18,17 @@ public:
 	void onKeyPress();
 	void onKeyRelease();
 
+	bool isOnTheGround() const;
+
 private:
 	b2Body* body;
+	b2Joint* joint;
+	Board* board;
 
 	vie::Timer moveTimer;
 	vie::Timer spacePressTimer;
 
-	bool isOnTheGround() const;
+	vie::Texture texture;
+
 };
 

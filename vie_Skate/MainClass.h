@@ -13,6 +13,9 @@ public:
 	void update(float et);
 	void render(vie::Graphics* g);
 
+	void onFatalError(const std::string& errMsg);
+	void onLog(const std::string& errMsg);
+
 private:
 	CameraControll* cameraControll;
 	Map* map;
